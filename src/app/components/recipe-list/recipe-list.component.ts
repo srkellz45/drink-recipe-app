@@ -28,9 +28,7 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit() {
-
-  
-
+    
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
     });
@@ -44,7 +42,6 @@ export class RecipeListComponent implements OnInit {
 
   addRecipe() {
     this.recipes.push(this.recipe);
-
     this.recipe = {
       title: '',
       ingredients: [],
@@ -59,7 +56,6 @@ export class RecipeListComponent implements OnInit {
       ingredients: [],
       directions: []
     }
-
   }
 
   onSubmit(e) {
@@ -123,6 +119,5 @@ export class RecipeListComponent implements OnInit {
     let i = this.selectedRecipe.ingredients.indexOf(ingredient);
     this.selectedRecipe.ingredients.splice(i, 1);
  }
-
-
+ 
 }

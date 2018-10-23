@@ -21,15 +21,9 @@ export class IndexViewComponent implements OnInit {
     });
 
     this.selectedRecipe = this.recipes[0];
-
   }
-
-
 
   listClick(recipe) {
     this.selectRecipe(recipe);
   }
-
-  
-
 }

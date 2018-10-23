@@ -1,0 +1,15 @@
+.view {
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.card-header i {
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0px 10px;
+    float: right
+}
+
+i {
+    cursor: pointer;
+}

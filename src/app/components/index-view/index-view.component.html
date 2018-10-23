@@ -1,0 +1,14 @@
+<div class="card card mb-3">
+    <div class="card-header">
+      Recipe List
+      <i data-toggle="modal" data-target="#addModal" class="fa fa-plus pull-right add event"></i>
+    </div>
+    <div class="view">
+      <ul *ngFor="let recipe of recipes" class="list-group">
+        <li (click)="listClick(recipe)"[ngClass]="{'active': selectedRecipe == recipe}" class="list-group-item">{{
+          recipe.title
+        }}</li>
+      </ul>
+    </div>
+  </div>
+<br>

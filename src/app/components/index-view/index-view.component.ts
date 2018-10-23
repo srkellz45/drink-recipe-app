@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../models/Recipe';
 
@@ -8,10 +8,8 @@ import { Recipe } from '../../models/Recipe';
   styleUrls: ['./index-view.component.css']
 })
 export class IndexViewComponent implements OnInit {
-  @Input() selectRecipe;
+  @Output() recipeSelected = new EventEmitter<Recipe>();
   recipes: Recipe[];
-  selectedRecipe: any;
-
 
   constructor(private recipeService: RecipeService) { }
 
@@ -20,16 +18,10 @@ export class IndexViewComponent implements OnInit {
       this.recipes = recipes;
     });
 
-    this.selectedRecipe = this.recipes[0];
-
   }
-
-
 
   listClick(recipe) {
-    this.selectRecipe(recipe);
+    this.recipeSelected.emit(recipe);
   }
-
-  
 
 }

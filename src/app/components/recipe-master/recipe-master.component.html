@@ -1,2 +1,2 @@
-<app-index-view [selectRecipe]="setSelectedRecipe"></app-index-view>
-<app-recipe-list [selectedRecipe]="selectedRecipe"></app-recipe-list>
+<app-index-view (recipeSelected)="onRecipeSelected($event)"></app-index-view>    
+<app-recipe-list *ngIf="selectedRecipe" [selectedRecipe]="selectedRecipe" ></app-recipe-list>

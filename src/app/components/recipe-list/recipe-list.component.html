@@ -49,7 +49,7 @@
 
           <div class="form-group">
             <label for="exampleFormControlInput1">Recipe</label>
-            <input type="text" class="form-control" placeholder="Recipe Name" [(ngModel)]="selectedRecipe.title" name="title"
+            <input type="text" class="form-control" placeholder="Recipe Name" [(ngModel)]="recipe.title" name="title"
               required>
           </div>
           <div class="form-group">
@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <ul *ngFor="let ingredient of selectedRecipe.ingredients" class="list-group">
+          <ul *ngFor="let ingredient of recipe.ingredients" class="list-group">
             <li class="list-group-item">{{ ingredient.title }}</li>
           </ul>
           <div class="form-group mt-3">
@@ -75,7 +75,7 @@
               </div>
             </div>
           </div>
-          <ul *ngFor="let step of selectedRecipe.directions; let i = index" class="list-group">
+          <ul *ngFor="let step of recipe.directions; let i = index" class="list-group">
             <li class="list-group-item">{{ step[i] }}</li>
           </ul>
         </div>

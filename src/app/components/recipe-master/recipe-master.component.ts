@@ -20,6 +20,8 @@ export class RecipeMasterComponent implements OnInit {
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
     });
+
+    this.selectedRecipe = this.recipes[0];
   }
 
   onRecipeSelected(recipe) {

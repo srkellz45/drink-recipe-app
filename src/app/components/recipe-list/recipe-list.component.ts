@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Recipe } from '../../models/Recipe';
 import { RecipeService } from '../../services/recipe.service';
 
@@ -18,21 +18,23 @@ export class RecipeListComponent implements OnInit {
   newTitle = '';
   recipe: Recipe = {
     title: '',
+    ingredient: '',
     ingredients: [],
     directions: []
   };
+  @ViewChild('recipeForm') form: any;
 
   constructor(private recipeService: RecipeService) {
 
   }
 
   ngOnInit() {
-    
+
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
     });
 
-
+      console.log(this.form);
   }
 
   addRecipe() {
@@ -53,34 +55,39 @@ export class RecipeListComponent implements OnInit {
     }
   }
 
-  onSubmit(e) {
-    e.preventDefault();
+  onSubmit(value: Recipe) {
+    this.recipes.unshift(value);
+    console.log(value);
+    this.recipe = {
+      title: '',
+      ingredient: '',
+      ingredients: [],
+      directions: []
+    };
   }
 
-  addIngredient(ingredient: HTMLInputElement) {
-    if (ingredient.value !== '') {
-      this.recipe.ingredients.push({title: ingredient.value, checked: false});
-      console.log(ingredient.value);
-      ingredient.value = '';
+
+  addIngredient(ingredient: any) {
+    if (this.recipe.ingredient == '' || this.recipe.ingredient == undefined ) {
+      console.log('empty')
+    } else {
+      this.recipe.ingredients.push({ title: ingredient, checked: false });
     }
+    this.recipe.ingredient = '';
   }
 
-  addStep(step: HTMLInputElement) {
-    if (step.value !== '') {
-      let length = this.recipe.directions.length;
-      let obj = {};
-      obj[length] = step.value;
-      this.recipe.directions.push(obj);
-      length++;
-      step.value = '';
-      obj = {};
-      console.log(this.recipe.directions );
+  addStep(direction: string) {
+    if (this.recipe.direction == '' || this.recipe.direction == undefined ) {
+      console.log('empty')
+    } else {
+      this.recipe.directions.push(direction)
     }
+    this.recipe.direction = '';
   }
 
   editAddIngredient(ingredient: HTMLInputElement) {
     if (ingredient.value !== '') {
-      this.selectedRecipe.ingredients.push({title: ingredient.value, checked: false});
+      this.selectedRecipe.ingredients.push({ title: ingredient.value, checked: false });
       ingredient.value = '';
     }
   }
@@ -91,6 +98,10 @@ export class RecipeListComponent implements OnInit {
       step.value = '';
     }
   }
+
+  trackByFn(index: any, item: any) {
+    return index;
+ }
 
   deleteRecipe(recipe) {
     if (confirm(`Are you sure you want to delete "${recipe.title}" from the recipe box?`)) {
@@ -103,13 +114,31 @@ export class RecipeListComponent implements OnInit {
   }
 
   deleteStep(step) {
-     const i = this.selectedRecipe.directions.indexOf(step);
-     this.selectedRecipe.directions.splice(i, 1);
+    const i = this.selectedRecipe.directions.indexOf(step);
+    this.selectedRecipe.directions.splice(i, 1);
   }
 
   deleteIngredient(ingredient) {
     const i = this.selectedRecipe.ingredients.indexOf(ingredient);
     this.selectedRecipe.ingredients.splice(i, 1);
- }
- 
+  }
+
+  validateForm() {
+    let valid;
+    if (this.recipe.directions.length === 0) {
+      valid = false;
+    } else if (this.recipe.directions.length === 0) {
+      valid = false;
+    } else if (this.recipe.title == '') {
+      valid = false;
+    } else {
+      valid = true;
+    }
+    return valid;
+  }
+
+  logError(){
+    console.log('form invalid');
+  }
+
 }

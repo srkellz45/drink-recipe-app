@@ -17,22 +17,18 @@
         <br>
         <h5>Directions</h5>
         <hr>
-
         <ul *ngFor="let direction of selectedRecipe.directions; let i = index">
           <div class="step-wrap">
                 <span class='step'>{{ i + 1 }}</span>
                 <p class="directions-container">
-                  <li class="directions"> {{ direction[i] }}</li>
+                  <li class="directions"> {{ direction }}</li>
                 </p>
           </div>
         </ul>
-
       </div>
     </div>
   </div>
 <br>
-
-
 
 <!-- Add Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -44,21 +40,38 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form (submit)="onSubmit($event)" (keyup.enter)="onSubmit($event)">
+      <form #recipeForm="ngForm" (ngSubmit)="onSubmit(this.recipe)">
         <div class="modal-body">
 
           <div class="form-group">
             <label for="exampleFormControlInput1">Recipe</label>
-            <input type="text" class="form-control" placeholder="Recipe Name" [(ngModel)]="recipe.title" name="title"
-              required>
+            <input 
+              type="text" 
+              class="form-control" 
+              name="title"
+              [(ngModel)]="recipe.title"              
+              placeholder="Recipe Name" 
+              #recipeName="ngModel"
+              required
+              minlength="2"
+            >
           </div>
           <div class="form-group">
             <label>Ingredients</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Add an ingredient" (keyup.enter)='addIngredient(newIngredient)'
-                #newIngredient>
+              <input 
+                type="text" 
+                class="form-control" 
+                name="ingredient"
+                [(ngModel)]="recipe.ingredient"
+                placeholder="Add an ingredient" 
+                #ingredientName="ngModel" 
+                required
+                minlength="2"
+                (keyup.enter)="addIngredient(recipe.ingredient)"
+              >
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" (click)='addIngredient(newIngredient)' type="button">Add</button>
+                <button [disabled]="ingredientName.errors" class="btn btn-outline-secondary" (click)='addIngredient(recipe.ingredient)' type="button">Add</button>
               </div>
             </div>
           </div>
@@ -68,21 +81,29 @@
           <div class="form-group mt-3">
             <label>Directions</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Add an step" (keyup.enter)="addStep(newStep)"
-                #newStep>
+              <input 
+                type="text" 
+                class="form-control" 
+                name="direction"
+                [(ngModel)]="recipe.direction"
+                placeholder="Add a step" 
+                #directionName="ngModel" 
+                required
+                minlength="2"
+                (keyup.enter)="addStep(recipe.direction)"
+              >
               <div class="input-group-append">
-                <button (click)="addStep(newStep)" class="btn btn-outline-secondary" type="button">Add</button>
+                <button [disabled]="directionName.errors" (click)="addStep(recipe.direction)" class="btn btn-outline-secondary" type="button">Add</button>
               </div>
             </div>
           </div>
           <ul *ngFor="let step of recipe.directions; let i = index" class="list-group">
-            <li class="list-group-item">{{ step[i] }}</li>
+            <li class="list-group-item">{{ step }}</li>
           </ul>
         </div>
         <div class="modal-footer">
           <span (click)="clearRecipe()"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></span>
-          <button type="button" [disabled]='selectedRecipe.title == "" || selectedRecipe.ingredients.length < 1 || selectedRecipe.directions.length < 1'
-            (click)="addRecipe(newTitle)" class="btn btn-primary">Add</button>
+          <button type="submit" [disabled]="!validateForm()" class="btn btn-primary">Add</button>
         </div>
       </form>
     </div>
@@ -143,7 +164,7 @@
                     <i class="fas fa-times deleteStep"></i>
                   </span>
                 </div>
-                <textarea class="form-control" [(ngModel)]="selectedRecipe.directions[index][index]" name="{{1}}"></textarea>
+                <textarea class="form-control" [(ngModel)]="selectedRecipe.directions[index]" name="step{{i}}"></textarea>
               </div>
             </div>
             <div class="modal-footer">

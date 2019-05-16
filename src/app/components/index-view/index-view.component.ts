@@ -15,9 +15,9 @@ export class IndexViewComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.recipeService.getRecipes().subscribe(recipes => {
-      this.recipes = recipes;
-    });
+    // this.recipeService.getRecipes().subscribe(recipes => {
+    //   this.recipes = recipes;
+    // });
 
     this.selectedRecipe = this.recipes[0];
   }

@@ -30,9 +30,9 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.recipeService.getRecipes().subscribe(recipes => {
-      this.recipes = recipes;
-    });
+    // this.recipeService.getRecipes().subscribe(recipes => {
+    //   this.recipes = recipes;
+    // });
 
       console.log(this.form);
   }

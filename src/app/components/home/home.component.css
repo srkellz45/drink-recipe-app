@@ -1,0 +1,15 @@
+.direction {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    width: 75% !important;
+}
+
+
+.drink-center {
+    text-align: center;
+    margin: 0 auto;
+    text-transform: uppercase;
+}

@@ -7,9 +7,12 @@
     width: 75% !important;
 }
 
-
 .drink-center {
     text-align: center;
     margin: 0 auto;
     text-transform: uppercase;
+}
+
+.card {
+    background-color: #2B3E50 !important;
 }

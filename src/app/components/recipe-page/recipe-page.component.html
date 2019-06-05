@@ -1,0 +1,73 @@
+<div class="container">
+  <a (click)="backClick()" class="btn btn-light btn-sm mb-3">Back</a>
+  <div *ngIf="!loaded" class="d-flex justify-content-center">
+    <div class="spinner-grow text-muted" style="width: 3rem; height: 3rem;"></div>
+  </div>
+  <div *ngIf="loaded" class="row">
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <h3 class="card-header">{{ drink.strDrink }}</h3>
+
+        <img style="height: 500px; width: 100%; display: block;" src="{{drink.strDrinkThumb}}" alt="drink image">
+        <div class="card-body">
+          <h5 class="card-title">INGREDIENTS IN THE {{ drink.strDrink | uppercase }}</h5>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngIf="drink.strIngredient1 !== null">
+              <span>{{ drink.strMeasure1 }}</span> <span>{{ drink.strIngredient1 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient2 !== null">
+              <span>{{ drink.strMeasure2 }}</span> <span>{{ drink.strIngredient2 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient3 !== null">
+              <span>{{ drink.strMeasure3 }}</span> <span>{{ drink.strIngredient3 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient4 !== null">
+              <span>{{ drink.strMeasure4 }}</span> <span>{{ drink.strIngredient4 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient5 !== null">
+              <span>{{ drink.strMeasure5 }}</span> <span>{{ drink.strIngredient5 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient6 !== null">
+              <span>{{ drink.strMeasure6 }}</span> <span>{{ drink.strIngredient6 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient7 !== null">
+              <span>{{ drink.strMeasure7 }}</span> <span>{{ drink.strIngredient7 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient8 !== null">
+              <span>{{ drink.strMeasure8 }}</span> <span>{{ drink.strIngredient8 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient9 !== null">
+              <span>{{ drink.strMeasure9 }}</span> <span>{{ drink.strIngredient9 }}</span>
+            </li>
+            <li *ngIf="drink.strIngredient10 !== null">
+              <span>{{ drink.strMeasure10 }}</span> <span>{{ drink.strIngredient10 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient11 !== null">
+              <span>{{ drink.strMeasure11 }}</span> <span>{{ drink.strIngredient11 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient12 !== null">
+              <span>{{ drink.strMeasure12 }}</span> <span>{{ drink.strIngredient12 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient13 !== null">
+              <span>{{ drink.strMeasure13 }}</span> <span>{{ drink.strIngredient13 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient14 !== null">
+              <span>{{ drink.strMeasure14 }}</span> <span>{{ drink.strIngredient14 }}</span>
+            </li>
+            <li class="list-group-item" *ngIf="drink.strIngredient15 !== null">
+              <span>{{ drink.strMeasure15 }}</span> <span>{{ drink.strIngredient15 }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <h5>HOW TO MAKE THE {{ drink.strDrink | uppercase }}</h5>
+          <p>{{ drink.strInstructions }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          {{ drink.dateModified | date }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

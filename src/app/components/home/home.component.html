@@ -10,97 +10,110 @@
     </div>
   </div>
 
-  <section class="gallery-block cards-gallery mb-4">
-    <div class="containter">
+  <div class="d-flex justify-content-center">
+    <div *ngIf="!loaded" class="spinner-grow text-muted"></div>
+  </div>
+
+  <div *ngIf="loaded">
+
+    <section class="gallery-block cards-gallery mb-4">
+
+
       <div class="row">
-        <h2 (click)="alert('Hello! I am an alert box!!')" class="drink-center mb-4"><strong>Popular Drinks</strong></h2>
+        <h2 class="drink-center mb-4"><strong>Popular Drinks</strong></h2>
+        
         <div class="col-lg-10 offset-lg-1">
           <div class="row">
             <div *ngFor="let drink of drinks | slice:0:6;" class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
-                <a  class="lightbox" href="#">
+                <a class="lightbox" routerLink="drink/{{ drink.idDrink }}">
                   <img (click)="chooseDrink(drink.idDrink)" class="card-img-top" src="{{ drink.strDrinkThumb }}">
                 </a>
                 <div class="card-body">
-                  <h5 class="drink-center"><strong>{{ drink.strDrink }}</strong></h5>
+                  <h6 class="drink-center"><strong>{{ drink.strDrink }}</strong></h6>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="gallery-block cards-gallery">
-    <div class="containter">
+    </section>
+
+    <section class="gallery-block cards-gallery">
       <div class="row">
         <h2 class="drink-center mb-4"><strong>RECIPES BY SPIRIT</strong></h2>
         <div class="col-lg-10 offset-lg-1">
           <div class="row">
             <div class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
-                <a class="lightbox" href="#">
-                  <img class="card-img-top" src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/rhhwmp1493067619.jpg">
+                <a class="lightbox" routerLink="category/gin">
+                  <img class="card-img-top"
+                    src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/rhhwmp1493067619.jpg">
                 </a>
                 <div class="card-body">
-                  <h5 class="drink-center"><strong>GIN</strong></h5>
+                  <h6 class="drink-center"><strong>GIN</strong></h6>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
-                <a class="lightbox" href="#">
-                  <img class="card-img-top" src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xxyywq1454511117.jpg">
+                <a class="lightbox" routerLink="category/tequila">
+                  <img class="card-img-top"
+                    src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xxyywq1454511117.jpg">
                 </a>
                 <div class="card-body">
-                  <h5 class="drink-center"><strong>TEQUILA</strong></h5>
+                  <h6 class="drink-center"><strong>TEQUILA</strong></h6>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
-                <a class="lightbox" href="#">
-                  <img class="card-img-top" src="https://www.thecocktaildb.com//images//media//drink//ttsvwy1472668781.jpg">
+                <a class="lightbox" routerLink="category/vodka">
+                  <img class="card-img-top"
+                    src="https://www.thecocktaildb.com//images//media//drink//ttsvwy1472668781.jpg">
                 </a>
                 <div class="card-body">
-                  <h5 class="drink-center"><strong>VODKA</strong></h5>
+                  <h6 class="drink-center"><strong>VODKA</strong></h6>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
-                <a class="lightbox" href="#">
-                  <img class="card-img-top" src="https://www.thecocktaildb.com//images//media//drink//eaag491504367543.jpg">
+                <a class="lightbox" routerLink="category/champagne">
+                  <img class="card-img-top"
+                    src="https://www.thecocktaildb.com//images//media//drink//eaag491504367543.jpg">
                 </a>
                 <div class="card-body">
-                  <h5 class="drink-center"><strong>CHAMPAGNE</strong></h5>
+                  <h6 class="drink-center"><strong>CHAMPAGNE</strong></h6>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
-                <a class="lightbox" href="#">
-                  <img class="card-img-top" src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/uwvyts1483387934.jpg">
+                <a class="lightbox" routerLink="category/bourbon">
+                  <img class="card-img-top"
+                    src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/uwvyts1483387934.jpg">
                 </a>
                 <div class="card-body">
-                  <h5 class="drink-center"><strong>BOURBON</strong></h5>
+                  <h6 class="drink-center"><strong>BOURBON</strong></h6>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
-                <a class="lightbox" href="#">
-                  <img class="card-img-top" src="https://www.thecocktaildb.com//images//media//drink//1sqm7n1485620312.jpg">
+                <a class="lightbox" routerLink="category/rum">
+                  <img class="card-img-top"
+                    src="https://www.thecocktaildb.com//images//media//drink//1sqm7n1485620312.jpg">
                 </a>
                 <div class="card-body">
-                  <h5 class="drink-center"><strong>RUM</strong></h5>
+                  <h6 class="drink-center"><strong>RUM</strong></h6>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>

@@ -13,6 +13,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RecipeService } from './services/recipe.service';
 import { DrinkPageComponent } from './components/drink-page/drink-page.component';
+import { RecipePageComponent } from './components/recipe-page/recipe-page.component';
+import { AppRouterModule } from './/app-router.module';
+import { CategoryResultsComponent } from './components/category-results/category-results.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { DrinkPageComponent } from './components/drink-page/drink-page.component
     RecipeMasterComponent,
     NavBarComponent,
     HomeComponent,
-    DrinkPageComponent  ],
+    DrinkPageComponent,
+    RecipePageComponent,
+    CategoryResultsComponent  ],
   imports: [
     BrowserModule,
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRouterModule
   ],
 
 

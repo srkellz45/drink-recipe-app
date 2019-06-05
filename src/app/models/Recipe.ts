@@ -1,7 +1,10 @@
+
 export interface Recipe {
-    title: string;
-    ingredient?: string,
-    direction?: string,
-    ingredients?: object[];
-    directions?: string[];
+    title: string,
+    id: any,
+    category: string,
+    date: string,
+    thumbnail: string,
+    ingredients: string[],
+    instructions: number
 }

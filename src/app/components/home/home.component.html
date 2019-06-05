@@ -1,4 +1,6 @@
+<!-- PAGE CONATINER -->
 <div class="container">
+  <!-- SEARCH FIELD -->
   <div class="row mb-4">
     <div class="col-lg-6 offset-lg-3">
       <div class="input-group">
@@ -9,20 +11,15 @@
       </div>
     </div>
   </div>
-
+  <!-- LOADING SPINNER -->
   <div class="d-flex justify-content-center">
     <div *ngIf="!loaded" class="spinner-grow text-muted"></div>
   </div>
-
+  <!-- PAGE CONTENT -->
   <div *ngIf="loaded">
-
-    <section class="gallery-block cards-gallery mb-4">
-
-
-      <div class="row">
+    <div class="row">
         <h2 class="drink-center mb-4"><strong>Popular Drinks</strong></h2>
-        
-        <div class="col-lg-10 offset-lg-1">
+        <!-- POPULAR DRINKS -->
           <div class="row">
             <div *ngFor="let drink of drinks | slice:0:6;" class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
@@ -35,15 +32,10 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
-
-    </section>
-
-    <section class="gallery-block cards-gallery">
+      <!-- DRINKS BY SPIRIT -->
       <div class="row">
         <h2 class="drink-center mb-4"><strong>RECIPES BY SPIRIT</strong></h2>
-        <div class="col-lg-10 offset-lg-1">
           <div class="row">
             <div class="col-md-6 col-lg-4">
               <div class="card border-0 transform-on-hover">
@@ -113,7 +105,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
+
   </div>
-</div>
+  
+  </div> <!-- END OF PAGE CONTAINER -->
+

@@ -1,3 +1,44 @@
+hr {
+    display:block !important;
+    position:relative !important;
+    width:100px !important;
+    border:1px solid rgba(white, .5) !important;
+  }
+
+.bottom-buffer-sm {
+    margin-bottom: 50px;
+}
+
+.bottom-buffer {
+    margin-bottom: 80px;
+}
+
+.bottom-buffer-lg {
+    margin-bottom: 130px;
+}
+
+.banner {
+    padding: 30px;
+    margin-bottom: 60px;
+    background-image: url("/assets/banner.png");
+
+}
+
+.button-group {
+    display: flex;
+    float: right;
+    margin-bottom: 20px;
+}
+.button-group {
+    margin-right: auto;
+}
+footer {
+    padding: 40px;
+    color: #999;
+    text-align: center;
+    border-top: .05rem solid #e5e5e5;
+}
+
 .direction {
     display: flex;
     flex-direction: row;
@@ -7,12 +48,8 @@
     width: 75% !important;
 }
 
-.drink-center {
-    text-align: center;
-    margin: 0 auto;
-    text-transform: uppercase;
+.bg-none {
+    background-color: #2B3E50 !important;
+    border: none;
 }
 
-.card {
-    background-color: #2B3E50 !important;
-}

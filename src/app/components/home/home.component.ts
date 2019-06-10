@@ -9,6 +9,7 @@ import { RecipeService } from '../../services/recipe.service';
 export class HomeComponent implements OnInit {
   drinks: any[];
   ginDrinks: any[];
+  newestDrinks: any[];
   chosenDrink: any = 'test';
   loaded: boolean = false;
     
@@ -18,18 +19,26 @@ export class HomeComponent implements OnInit {
     await this.getPopularDrinks();
     this.getGinDrinks();
     console.log(this.chosenDrink);
+    this.getNewestDrinks();
   }
 
   getPopularDrinks() {
     this.recipeService.getPopular().subscribe(drinks => {
       this.drinks = drinks.drinks;
-      console.log(drinks);
       this.loaded = true;
     });
   }
 
+  getNewestDrinks() {
+    this.recipeService.getNewestDrinks().subscribe(drinks => {
+      this.newestDrinks = drinks.drinks;
+      console.log(drinks);
+      this.loaded = true;
+    })
+  }
+
   getGinDrinks() {
-    this.recipeService.getCocktailsByIngredient('gin').subscribe(ginDrinks => {
+    this.recipeService.getDrinksByIngredient('gin').subscribe(ginDrinks => {
       this.ginDrinks = ginDrinks;
       console.log(ginDrinks);  
     });
@@ -42,4 +51,6 @@ export class HomeComponent implements OnInit {
     });
     console.log(this.chosenDrink);
   }
+
+  
 }

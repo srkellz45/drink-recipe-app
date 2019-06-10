@@ -1,0 +1,82 @@
+<div class="container">
+  <!-- <div *ngIf="!loaded" class="d-flex justify-content-center loader-margin spinner-border text-primary" style="width: 5rem; height: 5rem;">
+    <div *ngIf="!loaded" class="sr-only"></div>
+  </div> -->
+  <br>
+  <a (click)="backClick()" class="btn btn-light btn-sm mb-3 top-buffer">Back</a>
+  <div class="row bottom-buffer">
+    <h2 class="drink-center mb-5"><strong>RECIPES BY SPIRIT</strong></h2>
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-none">
+          <a class="lightbox" (click)="changePage('gin')">
+            <img class="card-img-top" src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/rhhwmp1493067619.jpg">
+          </a>
+          <div class="card-body">
+            <h6 [title]="spiritName" class="drink-center"  #name><strong>GIN</strong></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-none transform-on-hover">
+          <a class="lightbox" (click)="changePage('tequila')">
+            <img class="card-img-top" src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xxyywq1454511117.jpg">
+          </a>
+          <div class="card-body">
+            <h6 class="drink-center"><strong>TEQUILA</strong></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-none transform-on-hover">
+          <a class="lightbox" (click)="changePage('vodka')">
+            <img class="card-img-top" src="https://www.thecocktaildb.com//images//media//drink//ttsvwy1472668781.jpg">
+          </a>
+          <div class="card-body">
+            <h6 class="drink-center"><strong>VODKA</strong></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-none transform-on-hover">
+          <a class="lightbox" (click)="changePage('champagne')">
+            <img class="card-img-top" src="https://www.thecocktaildb.com//images//media//drink//eaag491504367543.jpg">
+          </a>
+          <div class="card-body">
+            <h6 class="drink-center"><strong>CHAMPAGNE</strong></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-none transform-on-hover">
+          <a class="lightbox" (click)="changePage('bourbon')">
+            <img class="card-img-top" src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/uwvyts1483387934.jpg">
+          </a>
+          <div class="card-body">
+            <h6 class="drink-center"><strong>BOURBON</strong></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-none transform-on-hover">
+          <a class="lightbox" (click)="changePage('rum')">
+            <img class="card-img-top" src="https://www.thecocktaildb.com//images//media//drink//1sqm7n1485620312.jpg">
+          </a>
+          <div class="card-body">
+            <h6 class="drink-center"><strong>RUM</strong></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-none transform-on-hover">
+          <a class="lightbox" (click)="changePage('whiskey')">
+            <img class="card-img-top" src="https://www.thecocktaildb.com/images/media/drink/ql7bmx1503565106.jpg">
+          </a>
+          <div class="card-body">
+            <h6 class="drink-center"><strong>Whiskey</strong></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

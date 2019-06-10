@@ -10,6 +10,7 @@ import { RecipeService } from '../../services/recipe.service';
   styleUrls: ['./category-results.component.css']
 })
 export class CategoryResultsComponent implements OnInit {
+
   loaded: boolean = false;
   drinks: any;
   ids: any[] = [];
@@ -42,8 +43,6 @@ export class CategoryResultsComponent implements OnInit {
       console.log(this.ids);
       console.log(this.fullDrinks);
     });
-
-    
   }
 
   getDetails(id) {

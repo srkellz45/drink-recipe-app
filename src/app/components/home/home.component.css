@@ -5,6 +5,10 @@ hr {
     border:1px solid rgba(white, .5) !important;
   }
 
+  a {
+      outline: none !important;
+  }
+
 .bottom-buffer-sm {
     margin-bottom: 50px;
 }

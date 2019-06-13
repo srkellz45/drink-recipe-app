@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -17,7 +19,8 @@ export class NonAlcoholicComponent implements OnInit {
 
   constructor(
     private recipeService: RecipeService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -42,6 +45,10 @@ export class NonAlcoholicComponent implements OnInit {
 
       console.log(this.fullDrinks);
     })
+  }
+
+  changePage(id) {
+    this.router.navigate([`drink/${id}`]);
   }
 
   backClick(){

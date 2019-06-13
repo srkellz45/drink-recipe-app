@@ -1,6 +1,10 @@
 * {
     outline: none !important;
 }
+
+a {
+    cursor: pointer;
+}
 .event {
     font-size: 1.2rem !important;
 }

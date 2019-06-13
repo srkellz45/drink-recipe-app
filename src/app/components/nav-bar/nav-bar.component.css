@@ -1,4 +1,6 @@
-
+input {
+    outline: none !important;
+}
 .logo {
     width: 220px;
 }

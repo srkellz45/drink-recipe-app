@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_spirit_page_spirit_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/spirit-page/spirit-page.component */ "./src/app/components/spirit-page/spirit-page.component.ts");
 /* harmony import */ var _components_non_alcoholic_non_alcoholic_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/non-alcoholic/non-alcoholic.component */ "./src/app/components/non-alcoholic/non-alcoholic.component.ts");
 /* harmony import */ var _components_random_random_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/random/random.component */ "./src/app/components/random/random.component.ts");
+/* harmony import */ var _components_search_results_search_results_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/search-results/search-results.component */ "./src/app/components/search-results/search-results.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,13 +58,15 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
     { path: 'drink/:id', component: _components_recipe_page_recipe_page_component__WEBPACK_IMPORTED_MODULE_4__["RecipePageComponent"] },
     { path: 'category/:ingredient', component: _components_category_results_category_results_component__WEBPACK_IMPORTED_MODULE_5__["CategoryResultsComponent"] },
     { path: 'spirits', component: _components_spirit_page_spirit_page_component__WEBPACK_IMPORTED_MODULE_6__["SpiritPageComponent"] },
     { path: 'non-alcoholic', component: _components_non_alcoholic_non_alcoholic_component__WEBPACK_IMPORTED_MODULE_7__["NonAlcoholicComponent"] },
-    { path: 'random', component: _components_random_random_component__WEBPACK_IMPORTED_MODULE_8__["RandomComponent"] }
+    { path: 'random', component: _components_random_random_component__WEBPACK_IMPORTED_MODULE_8__["RandomComponent"] },
+    { path: 'search-results', component: _components_search_results_search_results_component__WEBPACK_IMPORTED_MODULE_9__["SearchResultsComponent"] }
 ];
 var AppRouterModule = /** @class */ (function () {
     function AppRouterModule() {
@@ -501,7 +504,7 @@ module.exports = "\n.logo {\n    width: 220px;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<nav class=\"navbar navbar-expand-lg bg-dark navbar-dark\">\n    <a routerLink=\"/\" class=\"navbar-brand\"><img class=\"logo\" src=\"assets/logo.png\"></a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n  \n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav mr-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"spirits\">Spirits</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"non-alcoholic\">Non Alcoholic</a>\n          </li>\n        \n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"random\">Random Drink</a>\n        </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n        <button class=\"btn btn-outline-primary my-2 my-sm-0\" type=\"submit\">Search</button>\n      </form>\n    </div>\n  </nav>"
+module.exports = "\n\n<nav class=\"navbar navbar-expand-lg bg-dark navbar-dark\">\n    <a routerLink=\"/\" class=\"navbar-brand\"><img class=\"logo\" src=\"assets/logo.png\"></a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n  \n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav mr-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"spirits\">Spirits</a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink=\"non-alcoholic\">Non Alcoholic</a>\n          </li>\n        \n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLink=\"random\">Random Drink</a>\n        </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input [(ngModel)]=\"query\" class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" name=\"search\" aria-label=\"Search\">\n        <button [disabled]=\"query === ''\"class=\"btn btn-outline-primary my-2 my-sm-0\" (click)=\"searchByName(query)\" routerLink=\"/search-results\">Search</button>\n      </form>\n    </div>\n  </nav>"
 
 /***/ }),
 
@@ -516,6 +519,7 @@ module.exports = "\n\n<nav class=\"navbar navbar-expand-lg bg-dark navbar-dark\"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavBarComponent", function() { return NavBarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_recipe_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/recipe.service */ "./src/app/services/recipe.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -526,10 +530,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var NavBarComponent = /** @class */ (function () {
-    function NavBarComponent() {
+    function NavBarComponent(recipeService) {
+        this.recipeService = recipeService;
+        this.query = '';
+        this.searchResults = [];
     }
     NavBarComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.recipeService.currentQuery.subscribe(function (query) { return _this.query = query; });
+        this.recipeService.currentResults.subscribe(function (result) { return _this.searchResults = result; });
+    };
+    NavBarComponent.prototype.searchByName = function (query) {
+        var _this = this;
+        this.recipeService.searchByDrinkName(query).subscribe(function (drinks) {
+            _this.searchResults = drinks;
+            _this.recipeService.changeSearchResults(_this.searchResults);
+            _this.recipeService.changeSearchQuery(_this.query);
+            _this.query = '';
+        });
     };
     NavBarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -537,7 +557,7 @@ var NavBarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./nav-bar.component.html */ "./src/app/components/nav-bar/nav-bar.component.html"),
             styles: [__webpack_require__(/*! ./nav-bar.component.css */ "./src/app/components/nav-bar/nav-bar.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_recipe_service__WEBPACK_IMPORTED_MODULE_1__["RecipeService"]])
     ], NavBarComponent);
     return NavBarComponent;
 }());
@@ -833,7 +853,7 @@ var RecipePageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".result-card {\n    width: 400px;\n}\n\nspan {\n    font-size: 14px;\n    margin: 5px;\n}\n"
 
 /***/ }),
 
@@ -844,7 +864,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  search-results works!\n</p>\n"
+module.exports = "<div class=\"container\">\n  <br>\n  <a (click)=\"backClick()\" class=\"btn btn-light btn-sm mb-3\">Back</a>\n  <div *ngIf=\"!loaded\" class=\"d-flex justify-content-center\">\n    <div class=\"spinner-grow text-muted\" style=\"width: 3rem; height: 3rem;\"></div>\n  </div>\n  <h5 class=\"mt-3\" *ngIf=\"noResults\">Sorry we couldn't find any results matching \"{{ query }}\"</h5>\n  <div *ngIf=\"loaded && !noResults\">\n    <div class=\"row\">\n      <div *ngFor=\"let drink of searchResults; let i = index\" class=\"col-lg-6\">\n        <div class=\"card\">\n          <div class=\"row\">\n            <div class=\"col-lg-6\">\n              <a (click)=\"changePage(drink.idDrink)\">\n                <img class=\"card-img-top\" src=\"{{drink.strDrinkThumb}}\" alt=\"Card image cap\">\n              </a>\n            </div>\n            <div class=\"col-lg-4 card-body\">\n              <h5>{{ drink.strDrink }}</h5>\n              <span class=\"badge badge-pill badge-primary\">{{ drink.strIngredient1 }}</span>\n              <span *ngIf=\" drink.strIngredient2 == 'Gin'\" class=\"badge badge-pill badge-primary\">{{ drink.strIngredient2 }}</span>\n              <span class=\"badge badge-pill badge-primary\">{{ drink.strCategory }}</span>\n            </div>\n          </div>\n        </div>\n        <br>\n      </div>\n      <div class=\"col-lg-6 right-style\" *ngIf=\"i%2 == 0\">\n        <div class=\"card card-body\">\n          <img class=\"card-img-top\" src=\"{{drink.strDrinkThumb}}\" alt=\"Card image cap\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -859,6 +879,9 @@ module.exports = "<p>\n  search-results works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchResultsComponent", function() { return SearchResultsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_recipe_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/recipe.service */ "./src/app/services/recipe.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -869,22 +892,48 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var SearchResultsComponent = /** @class */ (function () {
-    function SearchResultsComponent() {
+    function SearchResultsComponent(recipeService, router, location) {
+        this.recipeService = recipeService;
+        this.router = router;
+        this.location = location;
+        this.searchResults = [];
+        this.loaded = false;
+        this.noResults = false;
     }
     SearchResultsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.recipeService.currentQuery.subscribe(function (query) { return _this.query = query; });
+        this.recipeService.currentResults.subscribe(function (result) {
+            if (result.drinks === null) {
+                _this.noResults = true;
+            }
+            else {
+                _this.searchResults = result.drinks;
+                _this.noResults = false;
+                _this.loaded = true;
+            }
+            console.log(_this.searchResults);
+        });
     };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], SearchResultsComponent.prototype, "searchQuery", void 0);
+    SearchResultsComponent.prototype.changePage = function (id) {
+        this.router.navigate(["drink/" + id]);
+    };
+    SearchResultsComponent.prototype.backClick = function () {
+        this.location.back();
+    };
     SearchResultsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-search-results',
             template: __webpack_require__(/*! ./search-results.component.html */ "./src/app/components/search-results/search-results.component.html"),
             styles: [__webpack_require__(/*! ./search-results.component.css */ "./src/app/components/search-results/search-results.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_recipe_service__WEBPACK_IMPORTED_MODULE_1__["RecipeService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]])
     ], SearchResultsComponent);
     return SearchResultsComponent;
 }());
@@ -1003,11 +1052,21 @@ var httpOptions = {
 var RecipeService = /** @class */ (function () {
     function RecipeService(http) {
         this.http = http;
-        this.recipes = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
+        this.searchQuerySource = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]("");
+        this.currentQuery = this.searchQuerySource.asObservable();
+        this.searchResultsSource = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
+        this.currentResults = this.searchResultsSource.asObservable();
         this.postUrl = 'https://www.thecocktaildb.com/api/json/v2/8673533/';
     }
-    RecipeService.prototype.setPopular = function (recipe) {
-        this.recipes.next(recipe);
+    RecipeService.prototype.changeSearchQuery = function (query) {
+        this.searchQuerySource.next(query);
+    };
+    RecipeService.prototype.changeSearchResults = function (results) {
+        this.searchResultsSource.next(results);
+    };
+    RecipeService.prototype.searchByDrinkName = function (query) {
+        var url = this.postUrl + "/search.php?s=" + query;
+        return this.http.get(url);
     };
     RecipeService.prototype.getPopular = function () {
         var url = this.postUrl + "/popular.php";

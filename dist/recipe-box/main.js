@@ -347,7 +347,7 @@ var CategoryResultsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "hr {\n    display:block !important;\n    position:relative !important;\n    width:100px !important;\n    border:1px solid rgba(white, .5) !important;\n  }\n\n.bottom-buffer-sm {\n    margin-bottom: 50px;\n}\n\n.bottom-buffer {\n    margin-bottom: 80px;\n}\n\n.bottom-buffer-lg {\n    margin-bottom: 130px;\n}\n\n.banner {\n    padding: 30px;\n    margin-bottom: 60px;\n    background-image: url(\"/assets/banner.png\");\n\n}\n\n.button-group {\n    display: flex;\n    float: right;\n    margin-bottom: 20px;\n}\n\n.button-group {\n    margin-right: auto;\n}\n\nfooter {\n    padding: 40px;\n    color: #999;\n    text-align: center;\n    border-top: .05rem solid #e5e5e5;\n}\n\n.direction {\n    display: flex;\n    flex-direction: row;\n}\n\n.container {\n    width: 75% !important;\n}\n\n.bg-none {\n    background-color: #2B3E50 !important;\n    border: none;\n}\n\n"
+module.exports = "hr {\n    display:block !important;\n    position:relative !important;\n    width:100px !important;\n    border:1px solid rgba(white, .5) !important;\n  }\n\n  a {\n      outline: none !important;\n  }\n\n  .bottom-buffer-sm {\n    margin-bottom: 50px;\n}\n\n  .bottom-buffer {\n    margin-bottom: 80px;\n}\n\n  .bottom-buffer-lg {\n    margin-bottom: 130px;\n}\n\n  .banner {\n    padding: 30px;\n    margin-bottom: 60px;\n    background-image: url(\"/assets/banner.png\");\n\n}\n\n  .button-group {\n    display: flex;\n    float: right;\n    margin-bottom: 20px;\n}\n\n  .button-group {\n    margin-right: auto;\n}\n\n  footer {\n    padding: 40px;\n    color: #999;\n    text-align: center;\n    border-top: .05rem solid #e5e5e5;\n}\n\n  .direction {\n    display: flex;\n    flex-direction: row;\n}\n\n  .container {\n    width: 75% !important;\n}\n\n  .bg-none {\n    background-color: #2B3E50 !important;\n    border: none;\n}\n\n"
 
 /***/ }),
 
@@ -493,7 +493,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n.logo {\n    width: 220px;\n}"
+module.exports = "input {\n    outline: none !important;\n}\n.logo {\n    width: 220px;\n}"
 
 /***/ }),
 
@@ -601,6 +601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_recipe_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/recipe.service */ "./src/app/services/recipe.service.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -613,10 +614,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var NonAlcoholicComponent = /** @class */ (function () {
-    function NonAlcoholicComponent(recipeService, location) {
+    function NonAlcoholicComponent(recipeService, location, router) {
         this.recipeService = recipeService;
         this.location = location;
+        this.router = router;
         this.loaded = false;
         this.drinkIds = [];
         this.fullDrinks = [];
@@ -642,6 +645,9 @@ var NonAlcoholicComponent = /** @class */ (function () {
             console.log(_this.fullDrinks);
         });
     };
+    NonAlcoholicComponent.prototype.changePage = function (id) {
+        this.router.navigate(["drink/" + id]);
+    };
     NonAlcoholicComponent.prototype.backClick = function () {
         this.location.back();
     };
@@ -652,7 +658,8 @@ var NonAlcoholicComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./non-alcoholic.component.css */ "./src/app/components/non-alcoholic/non-alcoholic.component.css")]
         }),
         __metadata("design:paramtypes", [_services_recipe_service__WEBPACK_IMPORTED_MODULE_1__["RecipeService"],
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], NonAlcoholicComponent);
     return NonAlcoholicComponent;
 }());
@@ -679,7 +686,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <br>\n  <a (click)=\"refreshPage()\" class=\"btn btn-light btn-sm mb-3 top-buffer\">New Recipe</a>\n\n  <div *ngIf=\"!loaded\" class=\"d-flex justify-content-center loader-margin spinner-border text-primary\" style=\"width: 5rem; height: 5rem;\">\n    <div *ngIf=\"!loaded\" class=\"sr-only\"></div>\n  </div>\n  <div *ngIf=\"loaded\" class=\"row\">\n    <div class=\"col-lg-6\">\n      <div class=\"card mb-3\">\n        <h3 class=\"card-header\">{{ drink.strDrink }}</h3>\n\n        <img style=\"height: 500px; width: 100%; display: block;\" src=\"{{ drink.strDrinkThumb }}\" alt=\"drink image\">\n        <div class=\"card-body\">\n          <h5 class=\"card-title\">INGREDIENTS IN THE {{ drink.strDrink | uppercase }}</h5>\n\n          <ul class=\"list-group list-group-flush\">\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient1 !== null\">\n              <span>{{ drink.strMeasure1 }}</span>&nbsp;<span>{{ drink.strIngredient1 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient2 !== null\">\n              <span>{{ drink.strMeasure2 }}</span>&nbsp;<span>{{ drink.strIngredient2 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient3 !== null\">\n              <span>{{ drink.strMeasure3 }}</span>&nbsp;<span>{{ drink.strIngredient3 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient4 !== null\">\n              <span>{{ drink.strMeasure4 }}</span>&nbsp; <span>{{ drink.strIngredient4 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient5 !== null\">\n              <span>{{ drink.strMeasure5 }}</span>&nbsp; <span>{{ drink.strIngredient5 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient6 !== null\">\n              <span>{{ drink.strMeasure6 }}</span>&nbsp; <span>{{ drink.strIngredient6 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient7 !== null\">\n              <span>{{ drink.strMeasure7 }}</span>&nbsp; <span>{{ drink.strIngredient7 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient8 !== null\">\n              <span>{{ drink.strMeasure8 }}</span>&nbsp; <span>{{ drink.strIngredient8 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient9 !== null\">\n              <span>{{ drink.strMeasure9 }}</span>&nbsp; <span>{{ drink.strIngredient9 }}</span>\n            </li>\n            <li *ngIf=\"drink.strIngredient10 !== null\">\n              <span>{{ drink.strMeasure10 }}</span>&nbsp; <span>{{ drink.strIngredient10 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient11 !== null\">\n              <span>{{ drink.strMeasure11 }}</span>&nbsp; <span>{{ drink.strIngredient11 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient12 !== null\">\n              <span>{{ drink.strMeasure12 }}</span>&nbsp; <span>{{ drink.strIngredient12 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient13 !== null\">\n              <span>{{ drink.strMeasure13 }}</span>&nbsp; <span>{{ drink.strIngredient13 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient14 !== null\">\n              <span>{{ drink.strMeasure14 }}</span>&nbsp; <span>{{ drink.strIngredient14 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient15 !== null\">\n              <span>{{ drink.strMeasure15 }}</span>&nbsp; <span>{{ drink.strIngredient15 }}</span>\n            </li>\n          </ul>\n        </div>\n        <div class=\"card-body\">\n          <h5>HOW TO MAKE THE {{ drink.strDrink | uppercase }}</h5>\n          <p>{{ drink.strInstructions }}</p>\n        </div>\n        <div class=\"card-footer text-muted\">\n          {{ drink.dateModified | date }}\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <br>\n  <a (click)=\"backClick()\" class=\"btn btn-light btn-sm mb-3 top-buffer\">Back</a>\n\n  <div *ngIf=\"!loaded\" class=\"d-flex justify-content-center loader-margin spinner-border text-primary\" style=\"width: 5rem; height: 5rem;\">\n    <div *ngIf=\"!loaded\" class=\"sr-only\"></div>\n  </div>\n  <div *ngIf=\"loaded\" class=\"row\">\n    <div class=\"col-lg-6\">\n      <div class=\"card mb-3\">\n        <h3 class=\"card-header\">{{ drink.strDrink }}</h3>\n\n        <img style=\"height: 500px; width: 100%; display: block;\" src=\"{{ drink.strDrinkThumb }}\" alt=\"drink image\">\n        <div class=\"card-body\">\n          <h5 class=\"card-title\">INGREDIENTS IN THE {{ drink.strDrink | uppercase }}</h5>\n\n          <ul class=\"list-group list-group-flush\">\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient1 !== null\">\n              <span>{{ drink.strMeasure1 }}</span>&nbsp;<span>{{ drink.strIngredient1 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient2 !== null\">\n              <span>{{ drink.strMeasure2 }}</span>&nbsp;<span>{{ drink.strIngredient2 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient3 !== null\">\n              <span>{{ drink.strMeasure3 }}</span>&nbsp;<span>{{ drink.strIngredient3 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient4 !== null\">\n              <span>{{ drink.strMeasure4 }}</span>&nbsp; <span>{{ drink.strIngredient4 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient5 !== null\">\n              <span>{{ drink.strMeasure5 }}</span>&nbsp; <span>{{ drink.strIngredient5 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient6 !== null\">\n              <span>{{ drink.strMeasure6 }}</span>&nbsp; <span>{{ drink.strIngredient6 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient7 !== null\">\n              <span>{{ drink.strMeasure7 }}</span>&nbsp; <span>{{ drink.strIngredient7 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient8 !== null\">\n              <span>{{ drink.strMeasure8 }}</span>&nbsp; <span>{{ drink.strIngredient8 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient9 !== null\">\n              <span>{{ drink.strMeasure9 }}</span>&nbsp; <span>{{ drink.strIngredient9 }}</span>\n            </li>\n            <li *ngIf=\"drink.strIngredient10 !== null\">\n              <span>{{ drink.strMeasure10 }}</span>&nbsp; <span>{{ drink.strIngredient10 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient11 !== null\">\n              <span>{{ drink.strMeasure11 }}</span>&nbsp; <span>{{ drink.strIngredient11 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient12 !== null\">\n              <span>{{ drink.strMeasure12 }}</span>&nbsp; <span>{{ drink.strIngredient12 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient13 !== null\">\n              <span>{{ drink.strMeasure13 }}</span>&nbsp; <span>{{ drink.strIngredient13 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient14 !== null\">\n              <span>{{ drink.strMeasure14 }}</span>&nbsp; <span>{{ drink.strIngredient14 }}</span>\n            </li>\n            <li class=\"list-group-item\" *ngIf=\"drink.strIngredient15 !== null\">\n              <span>{{ drink.strMeasure15 }}</span>&nbsp; <span>{{ drink.strIngredient15 }}</span>\n            </li>\n          </ul>\n        </div>\n        <div class=\"card-body\">\n          <h5>HOW TO MAKE THE {{ drink.strDrink | uppercase }}</h5>\n          <p>{{ drink.strInstructions }}</p>\n        </div>\n        <div class=\"card-footer text-muted\">\n          {{ drink.dateModified | date }}\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -853,7 +860,7 @@ var RecipePageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".result-card {\n    width: 400px;\n}\n\nspan {\n    font-size: 14px;\n    margin: 5px;\n}\n"
+module.exports = "\n\nspan {\n    font-size: 14px;\n    margin: 5px;\n}\n"
 
 /***/ }),
 

@@ -48,7 +48,7 @@ module.exports = "@import url(\"https://fonts.googleapis.com/css?family=Lato:300
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "* {\n    outline: none !important;\n}\n.event {\n    font-size: 1.2rem !important;\n}\n.drink-center {\n    text-align: center;\n    margin: 0 auto;\n    text-transform: uppercase;\n}\n.loader-margin {\n    margin-bottom: 600px;\n    margin-right: auto;\n    margin-left: auto;\n} \n\n"
+module.exports = "* {\n    outline: none !important;\n}\n\na {\n    cursor: pointer;\n}\n\n.event {\n    font-size: 1.2rem !important;\n}\n\n.drink-center {\n    text-align: center;\n    margin: 0 auto;\n    text-transform: uppercase;\n}\n\n.loader-margin {\n    margin-bottom: 600px;\n    margin-right: auto;\n    margin-left: auto;\n} \n\n"
 
 /***/ }),
 

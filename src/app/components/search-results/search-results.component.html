@@ -1,3 +1,35 @@
-<p>
-  search-results works!
-</p>
+<div class="container">
+  <br>
+  <a (click)="backClick()" class="btn btn-light btn-sm mb-3">Back</a>
+  <div *ngIf="!loaded" class="d-flex justify-content-center">
+    <div class="spinner-grow text-muted" style="width: 3rem; height: 3rem;"></div>
+  </div>
+  <h5 class="mt-3" *ngIf="noResults">Sorry we couldn't find any results matching "{{ query }}"</h5>
+  <div *ngIf="loaded && !noResults">
+    <div class="row">
+      <div *ngFor="let drink of searchResults; let i = index" class="col-lg-6">
+        <div class="card">
+          <div class="row">
+            <div class="col-lg-6">
+              <a (click)="changePage(drink.idDrink)">
+                <img class="card-img-top" src="{{drink.strDrinkThumb}}" alt="Card image cap">
+              </a>
+            </div>
+            <div class="col-lg-4 card-body">
+              <h5>{{ drink.strDrink }}</h5>
+              <span class="badge badge-pill badge-primary">{{ drink.strIngredient1 }}</span>
+              <span *ngIf=" drink.strIngredient2 == 'Gin'" class="badge badge-pill badge-primary">{{ drink.strIngredient2 }}</span>
+              <span class="badge badge-pill badge-primary">{{ drink.strCategory }}</span>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <div class="col-lg-6 right-style" *ngIf="i%2 == 0">
+        <div class="card card-body">
+          <img class="card-img-top" src="{{drink.strDrinkThumb}}" alt="Card image cap">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

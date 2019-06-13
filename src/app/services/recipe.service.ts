@@ -11,14 +11,28 @@ const httpOptions = {
 
 @Injectable()
 export class RecipeService {
-  recipes = new BehaviorSubject<Recipe[]>([]);
+
+  private searchQuerySource = new BehaviorSubject<string>("");
+  currentQuery = this.searchQuerySource.asObservable();
+
+  private searchResultsSource = new BehaviorSubject<any>([]);
+  currentResults = this.searchResultsSource.asObservable();
   
   postUrl: string = 'https://www.thecocktaildb.com/api/json/v2/8673533/';
 
   constructor(private http: HttpClient) { }
 
-  setPopular(recipe: Recipe[]) {
-    this.recipes.next(recipe);
+  changeSearchQuery(query: string) {
+    this.searchQuerySource.next(query);
+  }
+
+  changeSearchResults(results) {
+    this.searchResultsSource.next(results);
+  }
+
+  searchByDrinkName(query: string): Observable<any> {
+    const url = `${this.postUrl}/search.php?s=${query}`;
+    return this.http.get<any>(url);
   }
 
   getPopular(): Observable<any> {

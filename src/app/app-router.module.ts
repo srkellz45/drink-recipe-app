@@ -7,6 +7,7 @@ import { CategoryResultsComponent } from './components/category-results/category
 import { SpiritPageComponent } from './components/spirit-page/spirit-page.component';
 import { NonAlcoholicComponent } from './components/non-alcoholic/non-alcoholic.component';
 import { RandomComponent } from './components/random/random.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'category/:ingredient', component: CategoryResultsComponent},
   {path: 'spirits', component: SpiritPageComponent},
   {path: 'non-alcoholic', component: NonAlcoholicComponent},
-  {path: 'random', component: RandomComponent}
+  {path: 'random', component: RandomComponent},
+  {path: 'search-results', component: SearchResultsComponent}
 ]
 
 @NgModule({

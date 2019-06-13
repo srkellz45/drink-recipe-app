@@ -1,14 +1,16 @@
 <div class="container">
   <br>
   <a (click)="backClick()" class="btn btn-light btn-sm mb-3 top-buffer">Back</a>
-
   <div *ngIf="!loaded" class="d-flex justify-content-center loader-margin spinner-border text-primary" style="width: 5rem; height: 5rem;">
     <div *ngIf="!loaded" class="sr-only"></div>
   </div>
   <div *ngIf="loaded" class="row">
     <div class="col-lg-6">
       <div class="card mb-3">
-        <h3 class="card-header">{{ drink.strDrink }}</h3>
+        <div class="card-header">
+          <h3>{{ drink.strDrink }}</h3>
+
+        </div>
 
         <img style="height: 500px; width: 100%; display: block;" src="{{ drink.strDrinkThumb }}" alt="drink image">
         <div class="card-body">
